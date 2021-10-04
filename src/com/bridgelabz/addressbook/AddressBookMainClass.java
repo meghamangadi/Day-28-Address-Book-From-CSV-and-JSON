@@ -1,12 +1,12 @@
 package com.bridgelabz.addressbook;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.stream.Collectors;
-import java.util.Optional;
 import java.util.Scanner;
 import java.util.Comparator;
 
@@ -152,6 +152,20 @@ public class AddressBookMainClass {
 			FileHandling fileHandling = new FileHandling();
 			fileHandling.createFile();
 			fileHandling.writeContactToFile(addressBookSystem);
+			addressbooks.addContacts();
+			break;
+		case 12:
+			FileHandling fileHandlingcsv = new FileHandling();
+
+			try {
+				fileHandlingcsv.writeContactToCsv(addressBookSystem);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			addressbooks.addContacts();
+		case 13:
+			FileHandling fileHandlingjson = new FileHandling();
+			fileHandlingjson.writeContactToJson(addressBookSystem);
 			addressbooks.addContacts();
 			break;
 		default:
