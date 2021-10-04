@@ -1,5 +1,6 @@
 package com.bridgelabz.addressbook;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -30,7 +31,7 @@ public class AddressBookMainClass {
 		System.out.println(
 				"1 : Add new contact    2 : Edit contact  3 : Delete contact  4: Add Multiple Contacts 5: Display Contacts 6: Search Person 7: Person with City and State"
 						+ " 8: Count person by city and state 9: Sorted Person's by alphabetically in Address Book 10: Sorted Person's by alphabetically by City State And Zip Code"
-						+ "11: write the addressbook with persons contact into text file ");
+						+ "11: write the addressbook with persons contact into text file   12: write the addressbook with persons contact into csv file ");
 		int choice = sc.nextInt();
 		switch (choice) {
 		case 1:
@@ -154,6 +155,15 @@ public class AddressBookMainClass {
 			fileHandling.writeContactToFile(addressBookSystem);
 			addressbooks.addContacts();
 			break;
+		case 12:
+			FileHandling fileHandlingcsv = new FileHandling();
+
+			try {
+				fileHandlingcsv.writeContactToCsv(addressBookSystem);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			addressbooks.addContacts();
 		default:
 			System.out.println("Please Enter correct choice");
 		}
