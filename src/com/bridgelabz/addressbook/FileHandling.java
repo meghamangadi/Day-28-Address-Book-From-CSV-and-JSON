@@ -3,11 +3,14 @@ package com.bridgelabz.addressbook;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Writer;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import com.google.gson.Gson;
+import com.opencsv.CSVWriter;
 
 import com.opencsv.CSVWriter;
 
@@ -82,4 +85,21 @@ public class FileHandling {
 		writer.flush();
 		System.out.println("Details written into CSV");
 	}
+ 
+	
+	   public void writeContactToJson(Map<String, AddressBook> addressBookSystem) {
+	    	
+		    try {
+		    	// create a writer
+		        Writer writer = new FileWriter("AddrBookFilejson.json");
+		        // convert map to JSON File
+		        new Gson().toJson(addressBookSystem, writer);
+		        // close the writer
+		        writer.close();
+		        System.out.println("Details written into JSON File");
+		    } catch (Exception ex) {
+		        ex.printStackTrace();
+		    }
+	    }
+ 
 }
