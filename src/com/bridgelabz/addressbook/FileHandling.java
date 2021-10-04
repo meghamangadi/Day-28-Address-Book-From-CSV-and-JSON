@@ -12,6 +12,8 @@ import java.util.Map;
 import com.google.gson.Gson;
 import com.opencsv.CSVWriter;
 
+import com.opencsv.CSVWriter;
+
 public class FileHandling {
 
 	public void createFile() {
@@ -83,6 +85,7 @@ public class FileHandling {
 		writer.flush();
 		System.out.println("Details written into CSV");
 	}
+ 
 	
 	   public void writeContactToJson(Map<String, AddressBook> addressBookSystem) {
 	    	
@@ -98,4 +101,5 @@ public class FileHandling {
 		        ex.printStackTrace();
 		    }
 	    }
+ 
 }
